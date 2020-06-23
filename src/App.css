@@ -1,38 +1,68 @@
 .App {
   text-align: center;
+  max-width: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+main {
+  max-width: 100%;
+  display: grid;
+  grid-template-areas: 
+    "form form form"
+    "trendings touits touits";
+  grid-template-columns: repeat(3, 1fr);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sendForm {
+  grid-area: form;
+  display: flex;
+  align-items: center;
+  justify-self: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sendForm div > * {
+  height: 20px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px grey solid;
+}
+
+.sendForm textarea {
+  width: 600px;
+}
+
+.trendingsContainer {
+  grid-area: trendings;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.trendingsContainer ul {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.touitsContainer {
+  grid-area: touits;
+  max-width: 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.touitsContainer ul {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 10px;
+  padding-left: 0;
+}
+
+.touitsContainer ul li {
+  border: 1px solid black;
+  padding: 5px;
+  margin-bottom : 5px;
+}
+
+.touitsContainer ul li p {
+  word-wrap: break-word;
+}
+
+li {
+  list-style: none;
 }
