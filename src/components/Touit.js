@@ -1,11 +1,16 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {addLike} from '../api/TouitAPI';
+import {addLike, removeLike} from '../api/TouitAPI';
 
 class Touit extends React.Component {
     like = () => {
         const {idtouit, updateTouits} = this.props;
         addLike(idtouit, updateTouits);
+    }
+
+    dislike = () => {
+        const {idtouit, updateTouits} = this.props;
+        removeLike(idtouit, updateTouits);
     }
 
     render() {
@@ -19,10 +24,16 @@ class Touit extends React.Component {
                     <li>
                         <p>{nbLikes} {nbLikes > 1 ? "likes" : "like"}</p>
                         <button className="btn" onClick={this.like}>J'aime !</button>
+                        <button className="btn" onClick={this.dislike}>Je n'aime pas !</button>
                     </li>
                     <li>
                         <p>{nbComments} {nbComments > 1 ? "comments" : "comment"}</p>
-                        <button className="btn">Je donne mon avis !</button>
+                        <Link className="btn" to={{
+                            pathname: "/comment",
+                            state: {
+                                "idtouit" : idtouit
+                            }
+                        }}>Je donne mon avis !</Link>
                     </li>
                 </ul>
                 {/* il serait préférable d'utiliser le point d'API permettant de récupérer un seul touit afin d'être sûr d'avoir le nombre de likes et de comments à jour */}

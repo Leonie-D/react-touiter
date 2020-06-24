@@ -84,3 +84,30 @@ export const addLike = (idtouit, updateTouits) => {
     addLikeRequest.send('message_id='+idtouit);
     getTouits(updateTouits);
 }
+
+export const removeLike = (idtouit, updateTouits) => {
+    const removeLikeRequest = new XMLHttpRequest();
+    removeLikeRequest.open('DELETE', endpoints.LKRemove, true);
+    removeLikeRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    removeLikeRequest.send('message_id='+idtouit);
+    getTouits(updateTouits);
+}
+
+export const sendComment = (pseudo, message, idtouit) => {
+    const nouveauCommentaire = new FormData();
+    nouveauCommentaire.append('name', pseudo.value);
+    nouveauCommentaire.append('comment', message.value);
+    nouveauCommentaire.append('idtouit', idtouit);
+
+    const sendCommentrequest = new XMLHttpRequest();
+    sendCommentrequest.open('POST', endpoints.CMTSend, true);
+    sendCommentrequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    sendCommentrequest.addEventListener('readystatechange', function(){
+        if (sendCommentrequest.readyState === XMLHttpRequest.DONE && sendCommentrequest.status === 200 && JSON.parse(sendCommentrequest.responseText).error !== undefined) {
+            alert(JSON.parse(sendCommentrequest.responseText).error);
+        } else if (sendCommentrequest.readyState === XMLHttpRequest.DONE && sendCommentrequest.status === 200 && JSON.parse(sendCommentrequest.responseText).error === undefined) {
+            // ici un update
+        };
+    });
+    sendCommentrequest.send(nouveauCommentaire);
+};

@@ -28,6 +28,7 @@ main>div {
   padding : 5px 15px;
   font-size: .8rem;
   text-decoration: none;
+  margin: 2px;
 }
 
 .sendForm {
@@ -96,4 +97,15 @@ li {
   max-width: 70%;
   margin-right: auto;
   margin-left: auto;
+  align-items: center;
+}
+
+.single-touit ul li {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.single-touit .btn {
+  display: flex;
+  align-items: center;
 }

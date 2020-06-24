@@ -37,7 +37,7 @@ class SingleTouit extends React.Component {
                     <li>{nbLikes} {nbLikes > 1 ? "likes" : "like"}</li>
                     <li>{nbComments} {nbComments > 1 ? "comments" : "comment"}</li>
                 </ul>
-                {commentIsLoaded ? <CommentContainer comments={comments}/> : <p>Chargement...</p>}
+                {nbComments === 0 ? "" : (commentIsLoaded ? <CommentContainer comments={comments}/> : <p>Chargement...</p>)}
                 <Link className="btn" to="/" >Retour</Link>
             </div>
         )
