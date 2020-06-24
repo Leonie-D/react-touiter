@@ -76,3 +76,11 @@ export const getComments = (idtouit, nbComments, updateComments) => {
     });
     getCommentsRequest.send();
 }
+
+export const addLike = (idtouit, updateTouits) => {
+    const addLikeRequest = new XMLHttpRequest();
+    addLikeRequest.open('PUT', endpoints.LKSend, true);
+    addLikeRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    addLikeRequest.send('message_id='+idtouit);
+    getTouits(updateTouits);
+}

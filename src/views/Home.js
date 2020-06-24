@@ -49,7 +49,7 @@ class Home extends Component {
             <div>
                 <SendMessageForm updateTouits={this.updateTouits} updateTrendings={this.updateTrendings} />
 
-                {touitIsLoaded ? <TouitContainer touits={touits} /> : <p>Chargement...</p>}
+                {touitIsLoaded ? <TouitContainer touits={touits} updateTouits={this.updateTouits} /> : <p>Chargement...</p>}
 
                 {trendingIsLoaded ? <Trending trendings={trendings} /> : <p>Chargement...</p>}
             </div>

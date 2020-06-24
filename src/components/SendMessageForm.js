@@ -22,7 +22,7 @@ class SendMessageForm extends React.Component {
                     <label style={{display: 'none'}}>Message:</label>
                     <textarea placeholder="message" name="message"></textarea>
                 </div>
-                <button>Envoyer</button>
+                <button className="btn">Envoyer</button>
             </form>
         )
     }
