@@ -57,3 +57,21 @@ export const getTrendings = (updateTrendings) => {
     getTrendingsRequest.open('GET', endpoints.TR, true);
     getTrendingsRequest.send();
 }
+
+// export const getComments = (idtouit, nbComments) => {
+//     const getCommentsRequest = new XMLHttpRequest();
+//     getCommentsRequest.open('GET', endpoints.CMTList+'?message_id='+idtouit, true);
+//     getCommentsRequest.addEventListener('readystatechange', function(){
+//         if (getCommentsRequest.readyState === XMLHttpRequest.DONE && getCommentsRequest.status === 200 && nbComments > 0) {
+//             const allComments = JSON.parse(request.responseText).comments;
+//             let comments = [];
+//             for (let comment of allComments) {
+//                 comments.push({
+//                     "pseudo" : comment.name,
+//                     "content" : comment.comment
+//                 });
+//             };
+//         };
+//     });
+//     request.send();
+// }

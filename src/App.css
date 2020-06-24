@@ -3,7 +3,12 @@
   max-width: 100%;
 }
 
-main {
+header {
+  background-color: black;
+  color: white;
+}
+
+main>div {
   max-width: 100%;
   display: grid;
   grid-template-areas: 
@@ -46,14 +51,14 @@ main {
   max-width: 100%;
 }
 
-.touitsContainer ul {
+.touit {
   display: flex;
   flex-direction: column-reverse;
   margin: 10px;
   padding-left: 0;
 }
 
-.touitsContainer ul li {
+.touit>li {
   border: 1px solid black;
   padding: 5px;
   margin-bottom : 5px;
@@ -65,4 +70,17 @@ main {
 
 li {
   list-style: none;
+}
+
+.touitDetails {
+  display: flex;
+  justify-content: space-around;
+}
+
+.single-touit {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin-right: auto;
+  margin-left: auto;
 }
