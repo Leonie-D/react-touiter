@@ -11,8 +11,8 @@ export const getTouits = (updateTouits) => {
                 touits.push({
                     "pseudo" : touit.name,
                     "message" : touit.message,
-                    // "nbLikes" : touit.likes,
-                    // "nbComments" : touit.comments_count,
+                    "nbLikes" : touit.likes,
+                    "nbComments" : touit.comments_count,
                     "idtouit" : touit.id
                 });
             };
@@ -24,7 +24,7 @@ export const getTouits = (updateTouits) => {
     getTouitsRequest.send();
 }
 
-export const sendTouit = (pseudo, message, updateTouits) => {
+export const sendTouit = (pseudo, message, updateTouits, updateTrendings) => {
     const nouveauMessage = new FormData();
     nouveauMessage.append('name', pseudo.value);
     nouveauMessage.append('message', message.value);
@@ -38,6 +38,7 @@ export const sendTouit = (pseudo, message, updateTouits) => {
     });
     postTouitRequest.send(nouveauMessage);
     getTouits(updateTouits);
+    getTrendings(updateTrendings);
 }
 
 export const getTrendings = (updateTrendings) => {

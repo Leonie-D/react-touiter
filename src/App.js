@@ -3,7 +3,7 @@ import Header from './components/Header';
 import SendMessageForm from './components/SendMessageForm';
 import TouitContainer from './components/TouitContainer';
 import Trending from './components/Trending';
-import {getTouits} from './api/TouitAPI';
+import {getTouits, getTrendings} from './api/TouitAPI';
 import './App.css';
 
 class App extends React.Component {
@@ -11,35 +11,45 @@ class App extends React.Component {
     super(props);
     this.state = {
       "error" : null,
-      "isLoaded" : false,
-      "touits" : []
+      "touitIsLoaded" : false,
+      "touits" : [],
+      "trendingIsLoaded" : false,
+      "trendings" : []
     };
   }
 
   updateTouits = (touits) => {
     this.setState({ 
       "touits" : touits,
-      "isLoaded" : true
+      "touitIsLoaded" : true
     });
   }
+
+  updateTrendings = (trendings) => {
+    this.setState({
+        "trendingIsLoaded" : true,
+        "trendings" : trendings
+    });
+}
   
   componentDidMount() {
     getTouits(this.updateTouits);
+    getTrendings(this.updateTrendings);
   }
 
   render() {
-    const {touits, isLoaded} = this.state;
+    const {touits, touitIsLoaded, trendings, trendingIsLoaded} = this.state;
     
     return (
       <div className="App">
           <Header />
           <main>
 
-            <SendMessageForm updateTouits={this.updateTouits}/>
+            <SendMessageForm updateTouits={this.updateTouits} updateTrendings={this.updateTrendings} />
 
-            {isLoaded ? <TouitContainer touits={touits}/> : <p>Chargement...</p>}
+            {touitIsLoaded ? <TouitContainer touits={touits} /> : <p>Chargement...</p>}
 
-            <Trending />
+            {trendingIsLoaded ? <Trending trendings={trendings} /> : <p>Chargement...</p>}
 
           </main>
       </div>

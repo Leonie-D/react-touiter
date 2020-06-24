@@ -6,7 +6,7 @@ class SendMessageForm extends React.Component {
     submit = (ev) => {
         ev.preventDefault();
         const {pseudo, message} = ev.target;
-        sendTouit(pseudo, message, this.props.updateTouits);
+        sendTouit(pseudo, message, this.props.updateTouits, this.props.updateTrendings);
     }
 
     render() {
