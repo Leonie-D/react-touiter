@@ -7,6 +7,8 @@ class SendMessageForm extends React.Component {
         ev.preventDefault();
         const {pseudo, message} = ev.target;
         sendTouit(pseudo, message, this.props.updateTouits, this.props.updateTrendings);
+        pseudo.value = "";
+        message.value = "";
     }
 
     render() {

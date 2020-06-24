@@ -9,7 +9,7 @@ class TouitContainer extends React.Component {
         return (
             <div className="touitsContainer">
                 <ul className="touit">
-                    {touits.map(t => <Touit key={t.idtouit} pseudo={t.pseudo} message={t.message} nbLikes={t.nbLikes} nbComments={t.nbComments} {...t} />)}
+                    {touits.map(t => <Touit key={t.idtouit} idtouit={t.idtouit} pseudo={t.pseudo} message={t.message} nbLikes={t.nbLikes} nbComments={t.nbComments} {...t} />)}
                 </ul>
             </div>
         )

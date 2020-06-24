@@ -8,22 +8,22 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          "error" : null,
-          "touitIsLoaded" : false,
-          "touits" : [],
-          "trendingIsLoaded" : false,
-          "trendings" : []
+            "error" : null,
+            "touitIsLoaded" : false,
+            "touits" : [],
+            "trendingIsLoaded" : false,
+            "trendings" : []
         };
-      }
+    }
     
-      updateTouits = (touits) => {
+    updateTouits = (touits) => {
         this.setState({ 
-          "touits" : touits,
-          "touitIsLoaded" : true
+            "touits" : touits,
+            "touitIsLoaded" : true
         });
-      }
-    
-      updateTrendings = (trendings) => {
+    }
+
+    updateTrendings = (trendings) => {
         this.setState({
             "trendingIsLoaded" : true,
             "trendings" : trendings
@@ -31,8 +31,15 @@ class Home extends Component {
     }
       
     componentDidMount() {
-        getTouits(this.updateTouits);
-        getTrendings(this.updateTrendings);
+        const intervalId = setInterval(() => {
+            getTouits(this.updateTouits);
+            getTrendings(this.updateTrendings);
+        }, 5000);
+        this.setState({"intervalId": intervalId});
+    }
+
+    componentWillMount() {
+        clearInterval(this.state.intervalId);
     }
 
     render() {

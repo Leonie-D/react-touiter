@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 class Touit extends React.Component {
     render() {
-        const {pseudo, message, nbLikes, nbComments} = this.props;
+        const {idtouit, pseudo, message, nbLikes, nbComments} = this.props;
 
         return (
             <li>
@@ -13,9 +13,11 @@ class Touit extends React.Component {
                     <li>{nbLikes} {nbLikes > 1 ? "likes" : "like"}</li>
                     <li>{nbComments} {nbComments > 1 ? "comments" : "comment"}</li>
                 </ul>
+                {/* il serait préférable d'utiliser le point d'API permettant de récupérer un seul touit afin d'être sûr d'avoir le nombre de likes et de comments à jour */}
                 <Link to={{
                     pathname: "/touit",
                     state: {
+                        "idtouit" : idtouit,
                         "pseudo" : pseudo,
                         "message" : message,
                         "nbLikes" : nbLikes,
